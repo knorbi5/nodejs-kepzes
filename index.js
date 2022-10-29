@@ -1,17 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {initDatabase} = require('./service/db');
+const { initDatabase } = require('./service/db');
 const addRoutes = require('./route');
 
 // inicializáljuk az express-t
 const app = express();
 
-// beállítjuk a json body parser-t (ezzel a req.body objektum tartalmazza a megadott kulcs/érték párokat)
+// beállítjuk a json body parser-t (ezzel a req.body objektum tartalmazza a request-ben megadott JSON kulcs/érték párokat)
 app.use(bodyParser.json());
 
 // adatbázis inicializálása, route-ok hozzáadása, api futtatása
-initDatabase((err, {db, bookModel}) => {
-    if(err) {
+initDatabase((err, { db, bookModel }) => {
+    if (err) {
         return console.error(err);
     }
 
