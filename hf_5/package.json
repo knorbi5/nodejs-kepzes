@@ -1,0 +1,21 @@
+{
+  "name": "hf_5",
+  "version": "1.0.0",
+  "description": "5. házi feladat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hazifeladat",
+    "nodejs",
+    "képzés"
+  ],
+  "author": "knorbi8",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.20"
+  }
+}
