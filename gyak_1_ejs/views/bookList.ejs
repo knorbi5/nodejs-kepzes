@@ -1,0 +1,17 @@
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr>
+                <th>Könyv címe</th>
+                <th>Könyv ára</th>
+            </tr>
+        <% books.forEach(function(item) { %>
+            <tr>
+                <td><%= item.title %></td>
+                <td><%= item.price %> .-</td>
+            </tr>
+        <% }) %>
+        </table>
+    </body>
+</html>
