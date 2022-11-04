@@ -7,7 +7,7 @@ const addRoutes = require('./route');
 const app = express();
 
 // beállítjuk a json body parser-t (ezzel a req.body objektum tartalmazza a request-ben megadott JSON kulcs/érték párokat)
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs');
 

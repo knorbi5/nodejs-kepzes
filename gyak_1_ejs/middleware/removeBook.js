@@ -7,7 +7,11 @@ module.exports = (objRep) => {
         bookModel.remove(book);
 
         db.saveDatabase(err => {
-            return res.status(200).json({success: 'Sikeres törlés!'});
+            if(err) {
+                return res.json({ error: err })
+            }
+
+            return res.redirect('/bookList');
         });
     }
 }

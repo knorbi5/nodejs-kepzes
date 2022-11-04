@@ -5,12 +5,13 @@ const getBooksMW = require('../middleware/getBooks');
 const getBookListMW = require('../middleware/getBookList');
 const getBookByIdMW = require('../middleware/getBookById');
 const getBookByTitleMW = require('../middleware/getBookByTitle');
+const bookFormMW = require('../middleware/bookForm');
 const insertBookMW = require('../middleware/insertBook');
 const updateBookMW = require('../middleware/updateBook');
 const removeBookMW = require('../middleware/removeBook');
 
 // route-ok hozzáadása
-function addRoutes(app, db, bookModel, ejs) {
+function addRoutes(app, db, bookModel) {
     // object repository - ebben gyűjtjük a middleware-ek által közösen használt objektumokat, így nem kell egyesével behívni őket minden middleware-ben
     const objRep = {
         db,
@@ -23,9 +24,10 @@ function addRoutes(app, db, bookModel, ejs) {
     // mivel a getBookByIdMW be van kötve a middleware lánc első elemeként, ezért a következő middleware-ben elérjük a res.locals-ba helyezett book objektumot
     app.get('/book/:id', getBookByIdMW(objRep), (req, res, next) => res.json(res.locals.book));
     app.get('/getBookByTitle', getBookByTitleMW(objRep));
-    app.put('/book', insertBookMW(objRep));
+    app.get('/insertBook', bookFormMW(objRep));
+    app.post('/insertBook', insertBookMW(objRep));
     app.patch('/book/:id', getBookByIdMW(objRep), updateBookMW(objRep));
-    app.delete('/book/:id', getBookByIdMW(objRep), removeBookMW(objRep));
+    app.get('/removeBook/:id', getBookByIdMW(objRep), removeBookMW(objRep));
 }
 
 module.exports = addRoutes;

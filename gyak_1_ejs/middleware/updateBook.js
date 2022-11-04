@@ -14,6 +14,10 @@ module.exports = (objRep) => {
         bookModel.update(book);
 
         db.saveDatabase(err => {
+            if(err) {
+                return res.json({ error: err })
+            }
+            
             return res.status(200).json({success: 'Adatok sikeresen módosítva!'});
         });
     }

@@ -5,13 +5,16 @@
             <tr>
                 <th>Könyv címe</th>
                 <th>Könyv ára</th>
+                <th></th>
             </tr>
         <% books.forEach(function(item) { %>
             <tr>
                 <td><%= item.title %></td>
                 <td><%= item.price %> .-</td>
+                <td><a href="/removeBook/<%= item.bookId %>">Törlés</a></td>
             </tr>
         <% }) %>
         </table>
+        <button onclick="location.href='/insertBook'">Új könyv hozzáadása</button>
     </body>
 </html>
