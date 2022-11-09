@@ -18,7 +18,7 @@ initDatabase((err, { db, bookModel }) => {
     addRoutes(app, db, bookModel);
 
     // api futtatása
-    app.listen(6000, () => {
+    app.listen(6001, () => {
         console.log('The app is running!');
     });
 });

@@ -24,6 +24,8 @@ function addRoutes(app, db, bookModel) {
     app.put('/book', insertBookMW(objRep));
     app.patch('/book/:id', getBookByIdMW(objRep), updateBookMW(objRep));
     app.delete('/book/:id', getBookByIdMW(objRep), removeBookMW(objRep));
+    // default error handler middleware
+    app.use((err, req, res, next) => res.status(500).send({error: err.message}));
 }
 
 module.exports = addRoutes;
