@@ -1,0 +1,58 @@
+<%- include('header'); %>
+<%- include('sidebar/left'); %>
+<div id="content">
+    <h3 class="text-center text-light mt-4">
+        Felfedezés
+        <% if(typeof username != "undefined") { %>
+            <small class="text-muted"><%= username %> aktivitása</small>
+        <% } else { %>
+            <small class="text-muted">friss aktivitás</small>
+        <% } %>
+    </h3>
+    <% if(tweets.length == 0) { %>
+        <div class="card">
+            <div class="card-body text-light p-4">
+                <p class="card-text">Nincsenek még tweetek...</p>
+            </div>
+        </div>
+        <% if(typeof username == "undefined") { %>
+            <div class="text-center">
+                <a href="/createTweet">
+                    <button type="button" class="btn btn-primary">Hozzáadom az elsőt</button>
+                </a>
+            </div>
+        <% } %>
+    <% } else {
+        tweets.forEach((item) => { %>
+            <div class="card">
+                <div class="card-header text-center text-light">
+                    knorbi8@gmail.com<!-- TODOKN: Felhasználó emailt bekötni -->
+                </div>
+                <div class="card-body text-light p-4">
+                    <p class="card-text"><%= item.content %></p>
+                    <div class="text-center">
+                        <a href="/updateTweet/<%= item.id %>" class="text-decoration-none">
+                            <button type="button" class="btn btn-light mx-1">Szerkesztés</button>
+                        </a>
+                        <a href="/deleteTweet/<%= item.id %>" class="text-decoration-none">
+                            <button type="button" class="btn btn-secondary mx-1">Törlés</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <%= item.create_date %>
+                </div>
+            </div>
+        <% }); %>
+
+        <% if(typeof username == "undefined") { %>
+            <div class="text-center">
+                <a href="/createTweet">
+                    <button type="button" class="btn btn-primary">Új tweet hozzáadása</button>
+                </a>
+            </div>
+        <% } %>
+    <% } %>
+</div>
+<%- include('sidebar/right'); %>
+<%- include('footer'); %>

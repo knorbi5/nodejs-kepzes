@@ -1,0 +1,20 @@
+<%- include('header'); %>
+<%- include('sidebar/left'); %>
+<div id="content">
+    <h3 class="text-center text-light mt-4">
+        Belépés
+    </h3>
+    <form method="POST" action="/login">
+        <div class="mb-1 mt-5">
+            <input type="email" class="form-control" id="email-input" name="email" placeholder="e-mail cím">
+        </div>
+        <div class="mb-3 mt-3">
+            <input type="password" class="form-control" id="password-input" name="password" placeholder="jelszó">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Belépés</button>
+        </div>
+    </form>
+</div>
+<%- include('sidebar/right'); %>
+<%- include('footer'); %>

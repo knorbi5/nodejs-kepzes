@@ -1,0 +1,22 @@
+<div id="sidebar-right-container">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 100%">
+        <a id="sidebar-right-header" href="/" class="d-flex flex-shrink-0 p-3 text-light text-decoration-none">
+            <span class="fs-5 fw-semibold">Felhasználók</span>
+        </a>
+
+        <ul class="list-group">
+            <% if(users.length == 0) { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Nincsenek még felhasználók
+                </li>
+            <% } else { %>
+                <% users.forEach((item) => { %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='/user_tweets/<%= item.id %>'">
+                        <%= item.email %>
+                        <span class="badge bg-primary rounded-pill">13</span>
+                    </li>
+                <% }); %>
+            <% } %>
+        </ul>
+    </div>
+</div>
