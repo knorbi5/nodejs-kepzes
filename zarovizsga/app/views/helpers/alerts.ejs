@@ -1,0 +1,10 @@
+<% if(typeof error != 'undefined' && error) { %>
+    <div class="alert alert-secondary mt-3" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+<% if(typeof success != 'undefined' && success) { %>
+    <div class="alert alert-light mt-3" role="alert">
+        <%= success %>
+    </div>
+<% } %>

@@ -27,7 +27,7 @@ module.exports = (objRep) => {
                 return next(err);
             }
 
-            return res.redirect("/");
+            return res.redirect("/login");
         });
     }
 }

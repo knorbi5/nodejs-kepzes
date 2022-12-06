@@ -10,7 +10,15 @@ module.exports = (objRep) => {
             res.locals.username = userModel.findOne({id: req.params.userid}).email;
         }
 
+        // lekérdezzük az összes tweetet
         res.locals.tweets = tweetModel.find(searchParam);
+
+        // hozzáfűzzük a tweetekhez tartozó usereket
+        const users = userModel.find();
+        res.locals.tweets.forEach(tweet => {
+            tweet.user = users.find((item) => {return item.id == tweet.user_id});
+        });
+
         return next();
     }
 }

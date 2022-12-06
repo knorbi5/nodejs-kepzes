@@ -1,6 +1,7 @@
 <%- include('header'); %>
 <%- include('sidebar/left'); %>
 <div id="content">
+    <%- include('helpers/alerts.ejs'); %>
     <h3 class="text-center text-light mt-4">
         Felfedezés
         <% if(typeof username != "undefined") { %>
@@ -26,11 +27,11 @@
         tweets.forEach((item) => { %>
             <div class="card">
                 <div class="card-header text-center text-light">
-                    knorbi8@gmail.com<!-- TODOKN: Felhasználó emailt bekötni -->
+                    <%= item.user.email %>
                 </div>
                 <div class="card-body text-light p-4">
                     <p class="card-text"><%= item.content %></p>
-                    <% if(item.user_id == loggedinUser.id) { %>
+                    <% if(loggedinUser && item.user_id == loggedinUser.id) { %>
                         <div class="text-center">
                             <a href="/updateTweet/<%= item.id %>" class="text-decoration-none">
                                 <button type="button" class="btn btn-light mx-1">Szerkesztés</button>

@@ -10,8 +10,7 @@ module.exports = (objRep) => {
         // ha belépés van folyamatban, kikeressük az érintett user rekordot
         const user = userModel.findOne({email: req.body.email, password: req.body.password});
 
-        // TODOKN: ez nem vizsgál jól
-        if(typeof user != 'undefined') {
+        if(typeof user != 'undefined' && user) {
             // ha megtaláltuk a usert, betesszük a session-be
             req.session.userid = user.id;
 
@@ -23,8 +22,7 @@ module.exports = (objRep) => {
             });
         }
 
-        // TODOKN: visszajelezni
-
-        return next(new Error('Hibás belépési folyamat!'));
+        res.locals.error = "Hibás felhasználónév, vagy jelszó!";
+        return next();
     }
 }

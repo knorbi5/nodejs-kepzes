@@ -34,6 +34,9 @@ function addRoutes(app, db, userModel, tweetModel) {
     app.use('/login', loginMW(objRep), getUsersListMW(objRep), renderMW(objRep, 'login'));
     app.use('/register', registerMW(objRep), getUsersListMW(objRep), renderMW(objRep, 'register'));
     app.use('/logout', logoutMW(objRep));
+
+    // default error handler
+    app.use((err, req, res, next) => res.status(500).send({error: err.message}));
 }
 
 module.exports = addRoutes;
