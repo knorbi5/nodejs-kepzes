@@ -11,7 +11,7 @@ module.exports = (objRep) => {
         const tweet = {
             id: uuid.v4(),
             content: req.body.content,
-            user_id: 1,
+            user_id: req.session.userid,
             create_date: new Date().toLocaleString()
         };
 

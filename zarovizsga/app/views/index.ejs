@@ -30,14 +30,16 @@
                 </div>
                 <div class="card-body text-light p-4">
                     <p class="card-text"><%= item.content %></p>
-                    <div class="text-center">
-                        <a href="/updateTweet/<%= item.id %>" class="text-decoration-none">
-                            <button type="button" class="btn btn-light mx-1">Szerkesztés</button>
-                        </a>
-                        <a href="/deleteTweet/<%= item.id %>" class="text-decoration-none">
-                            <button type="button" class="btn btn-secondary mx-1">Törlés</button>
-                        </a>
-                    </div>
+                    <% if(item.user_id == loggedinUser.id) { %>
+                        <div class="text-center">
+                            <a href="/updateTweet/<%= item.id %>" class="text-decoration-none">
+                                <button type="button" class="btn btn-light mx-1">Szerkesztés</button>
+                            </a>
+                            <a href="/deleteTweet/<%= item.id %>" class="text-decoration-none">
+                                <button type="button" class="btn btn-secondary mx-1">Törlés</button>
+                            </a>
+                        </div>
+                    <% } %>
                 </div>
                 <div class="card-footer text-muted text-center">
                     <%= item.create_date %>

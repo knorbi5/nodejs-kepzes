@@ -13,7 +13,6 @@
 <div id="sidebar-left-container">
     <div id="sidebar-left" class="d-flex flex-column flex-shrink-0 p-3">
         <a href="/" class="d-flex mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
-            <!--<svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>-->
             <span class="fs-4">Twitter Clone</span>
         </a>
         <hr>
@@ -24,23 +23,33 @@
                     Címlap
                 </a>
             </li>
-            <li>
-                <a href="/login" class="nav-link link-light">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Bejelentkezés
-                </a>
-            </li>
-            <li>
-                <a href="/register" class="nav-link link-light">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Regisztráció
-                </a>
-            </li>
+            <% if(loggedinUser == null) { %>
+                <li>
+                    <a href="/login" class="nav-link link-light">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Bejelentkezés
+                    </a>
+                </li>
+                <li>
+                    <a href="/register" class="nav-link link-light">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Regisztráció
+                    </a>
+                </li>
+            <% } else { %>
+                <li>
+                    <a href="/logout" class="nav-link link-light">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Kijelentkezés
+                    </a>
+                </li>
+            <% } %>
         </ul>
-        <hr>
-        <div>
-            <!-- TODOKN: Belépett user e-mail -->
-            <strong>Belépett user e-mail</strong>
-        </div>
+        <% if(loggedinUser != null) { %>
+            <hr>
+            <div>
+                <strong><%= loggedinUser.email %></strong>
+            </div>
+        <% } %>
     </div>
 </div>

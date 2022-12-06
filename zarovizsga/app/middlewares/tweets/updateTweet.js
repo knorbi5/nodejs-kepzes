@@ -2,12 +2,17 @@ module.exports = (objRep) => {
     const {db, tweetModel} = objRep;
 
     return (req, res, next) => {
+        let tweet = res.locals.tweet;
+        
+        // ha nem ő a tweet szerzője, akkor nem szerkesztheti
+        if(tweet.user_id != req.session.userid) {
+            return res.redirect("/");
+        }
+
         // ha nem mentésben (POST kérésben) vagyunk
         if(typeof req.body.content == 'undefined') {
             return next();
         }
-
-        let tweet = res.locals.tweet;
 
         tweet.content = req.body.content;
 

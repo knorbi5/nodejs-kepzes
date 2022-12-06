@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const { initDatabase } = require('./services/db');
 const addRoutes = require('./router');
 
@@ -15,6 +16,15 @@ app.use('/js', express.static('node_modules/bootstrap/dist/js'));
 app.use('/assets', express.static('assets'));
 
 app.set('view engine', 'ejs');
+
+// session konfigurálása
+app.use(
+    session({
+        secret: '95118985D3BD6D41',
+        resave: false,
+        saveUninitialized: true
+    })
+);
 
 // adatbázis inicializálása, route-ok hozzáadása, api futtatása
 initDatabase((err, { db, userModel, tweetModel }) => {
