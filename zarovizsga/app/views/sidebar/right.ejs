@@ -19,4 +19,18 @@
             <% } %>
         </ul>
     </div>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 100%">
+        <a id="sidebar-right-header" href="/" class="d-flex flex-shrink-0 p-3 text-light text-decoration-none">
+            <span class="fs-5 fw-semibold">Statisztikák</span>
+        </a>
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <p class="card-text">Felhasználók száma: <%= users.length %></p>
+                <p class="card-text">Összes tweet száma: <%= tweetCount %></p>
+                <% if(typeof userTweetCount != 'undefined') { %>
+                    <p class="card-text">Saját tweetek száma: <%= userTweetCount %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
 </div>

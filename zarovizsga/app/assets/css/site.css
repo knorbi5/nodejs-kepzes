@@ -137,9 +137,6 @@ body {
     width: 20%;
     padding-right: 10px;
 }
-#sidebar-right-container .list-group-item {
-    background-color: rgba(255, 255, 255, 0.9);
-}
 #content .card {
     border-radius: 10px;
     border: none;
@@ -161,6 +158,9 @@ body {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background: rgba(1, 1, 1, 0.5);
+}
+#sidebar-right-container .card, #sidebar-right-container .list-group-item {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 #sidebar-right-container .list-group-item {
     word-break: break-word;

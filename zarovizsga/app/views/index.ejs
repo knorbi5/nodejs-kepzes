@@ -7,7 +7,7 @@
         <% if(typeof username != "undefined") { %>
             <small class="text-muted"><%= username %> aktivitása</small>
         <% } else { %>
-            <small class="text-muted">friss aktivitás</small>
+            <small class="text-muted">friss aktivitás szerint</small>
         <% } %>
     </h3>
     <% if(tweets.length == 0) { %>
@@ -51,7 +51,7 @@
         <% if(typeof username == "undefined") { %>
             <div class="text-center">
                 <a href="/createTweet">
-                    <button type="button" class="btn btn-primary">Új tweet hozzáadása</button>
+                    <button type="button" class="btn btn-primary">Új tweet közzététele</button>
                 </a>
             </div>
         <% } %>

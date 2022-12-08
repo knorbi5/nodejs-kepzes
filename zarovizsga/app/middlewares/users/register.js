@@ -17,7 +17,8 @@ module.exports = (objRep) => {
             id: uuid.v4(),
             email: req.body.email,
             password: req.body.password,
-            create_date: new Date().toLocaleString()
+            create_date: new Date().toLocaleString(),
+            secret: uuid.v4()
         };
 
         userModel.insert(user);
