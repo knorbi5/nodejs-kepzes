@@ -7,9 +7,29 @@ module.exports = (objRep) => {
             return next();
         }
 
+        // ha nem adott meg e-mail címet
+        if(!req.body.email.length) {
+            res.locals.error = "Kérem adjon meg e-mail címet!";
+            return next();
+        }
+
+        // van-e már ilyen email címmel user
+        const userCheck = userModel.findOne({email: req.body.email});
+        if(userCheck) {
+            res.locals.error = "Ezzel az e-mail címmel már van regisztrált felhasználó, kérem válasszon másikat!";
+            return next();
+        }
+
+        // ha nem adott meg jelszót
+        if(!req.body.password.length) {
+            res.locals.error = "Kérem adjon meg jelszót!";
+            return next();
+        }
+
         // ha nem egyeznek meg a megadott jelszavak
         if(req.body.password != req.body.password_repeat) {
-            return res.redirect("/register");
+            res.locals.error = "A jelszavak nem egyeznek meg!";
+            return next();
         }
 
         // új user létrehozása

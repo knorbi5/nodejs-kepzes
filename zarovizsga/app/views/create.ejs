@@ -1,12 +1,13 @@
 <%- include('header'); %>
 <%- include('sidebar/left'); %>
 <div id="content">
+    <%- include('helpers/alerts.ejs'); %>
     <h3 class="text-center text-light mt-4">
         Új Tweet közzététele
     </h3>
     <form method="POST" action="/createTweet">
         <div class="mb-3 mt-5">
-            <textarea class="form-control" name="content" rows="3" placeholder="Tweet szövege"></textarea>
+            <textarea class="form-control" name="content" rows="3" placeholder="Tweet szövege" required></textarea>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Mentés</button>

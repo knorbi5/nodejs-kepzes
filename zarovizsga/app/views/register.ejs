@@ -1,18 +1,19 @@
 <%- include('header'); %>
 <%- include('sidebar/left'); %>
 <div id="content">
+    <%- include('helpers/alerts.ejs'); %>
     <h3 class="text-center text-light mt-4">
         Regisztráció
     </h3>
     <form method="POST" action="/register">
         <div class="mb-1 mt-5">
-            <input type="email" class="form-control" id="email-input" name="email" placeholder="e-mail cím">
+            <input type="email" class="form-control" id="email-input" name="email" placeholder="e-mail cím" required>
         </div>
         <div class="mb-3 mt-3">
-            <input type="password" class="form-control" id="password-input" name="password" placeholder="jelszó">
+            <input type="password" class="form-control" id="password-input" name="password" placeholder="jelszó" required>
         </div>
         <div class="mb-3 mt-3">
-            <input type="password" class="form-control" id="password-repeat-input" name="password_repeat" placeholder="jelszó újra">
+            <input type="password" class="form-control" id="password-repeat-input" name="password_repeat" placeholder="jelszó újra" required>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Regisztráció</button>

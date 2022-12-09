@@ -7,6 +7,12 @@ module.exports = (objRep) => {
             return next();
         }
 
+        // ha nem adott meg szöveget
+        if(!req.body.content.length) {
+            res.locals.error = "Kérem, adja meg a tweet szövegét!";
+            return next();
+        }
+
         // új létrehozása
         const tweet = {
             id: uuid.v4(),
